@@ -1,7 +1,8 @@
+import { catchError, tap } from 'rxjs/operators';
+
+import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
