@@ -11,7 +11,14 @@ import { OlympicService } from 'src/app/core/services/olympic.service';
 })
 export class HomeComponent implements OnInit {
   public olympics$: Observable<OlympicCountry[] | null> = of(null);
-  public chartData$: Observable<{country: string, totalMedals: number}[] | null> = of(null);
+  public chartData$: Observable<{name: string, value: number}[] | null> = of(null);
+
+  view: any = [700, 400];
+  colorScheme: any = {
+    domain: ['#956065', '#793D52', '#8AA1DB', '#9780A1', '#BEE0F1', '#B9CBE7']
+  };
+  gradient: boolean = true;
+  showLabels: boolean = true;
 
   constructor(private olympicService: OlympicService) {}
 
@@ -25,8 +32,8 @@ export class HomeComponent implements OnInit {
           return []
         }
         return countries.map(country =>({
-          country: country.country,
-          totalMedals: country.participations.reduce((acc, participations) => acc + participations.medalsCount, 0)
+          name: country.country,
+          value: country.participations.reduce((acc, participations) => acc + participations.medalsCount, 0)
         }))
       })
     )
