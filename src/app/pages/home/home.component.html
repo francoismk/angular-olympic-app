@@ -1,9 +1,7 @@
-<h2>Olympic games app</h2>
+<h2>Medals per country</h2>
 <hr />
-<p>{{ (olympics$ | async)?.length }} data loaded</p>
-<div *ngIf="olympics$ | async as olympics">
-  <p *ngFor="let olympic of olympics"> {{ olympic | json }}</p>
-</div>
+<p>Number of JOs : {{ totalGames }}</p>
+<p>Number of countries : {{ totalCountries }}</p>
 
 <ngx-charts-pie-chart
   [view]="view"
