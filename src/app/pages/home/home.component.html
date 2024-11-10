@@ -4,3 +4,6 @@
 <div *ngIf="olympics$ | async as olympics">
   <p *ngFor="let olympic of olympics"> {{ olympic | json }}</p>
 </div>
+<div *ngIf="chartData$ | async as chartdatas">
+  <p *ngFor="let chartdata of chartdatas"> {{ chartdata | json }}</p>
+</div>
