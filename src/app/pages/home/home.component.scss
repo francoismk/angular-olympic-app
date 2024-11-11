@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.medals-per-country {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.medals-per-country h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  padding: 5px 10px;
+  background-color: #01838F;
+  color: #FFF;
+  border-radius: 5px;
+}
+
+.medals-per-country .info {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  gap: 20px;
+}
+
+.medals-per-country .info p {
+  font-size: 16px;
+  padding: 5px 15px;
+  border: 3px solid #01838F;
+  border-radius: 5px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.medals-per-country .chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

@@ -1,21 +1,24 @@
-<h2>{{ countryName }}</h2>
-<div *ngIf="countryDetails$ | async">
-  <p>Number of entries: {{ totalEntries}}</p>
-  <p>Total number medals: {{ totalMedals }}</p>
-  <p>Total number of athletes: {{ totalAthletes }}</p>
-</div>
-<a routerLink="">Back</a>
+<div class="details-per-country">
+  <h2>{{ countryName }}</h2>
+  <div *ngIf="countryDetails$ | async" class="info">
+    <p><span>Number of entries</span>{{ totalEntries }}</p>
+    <p><span>Total number medals</span>{{ totalMedals }}</p>
+    <p><span>Total number of athletes</span>{{ totalAthletes }}</p>
+  </div>
 
-<ngx-charts-line-chart
-[view]="view"
-[scheme]="colorScheme"
-[showXAxisLabel]="showXAxisLabel"
-[showYAxisLabel]="showYAxisLabel"
-[xAxis]="xAxis"
-[yAxis]="yAxis"
-[xAxisLabel]="xAxisLabel"
-[yAxisLabel]="yAxisLabel"
-[timeline]="timeline"
-[results]="chartData"
->
-</ngx-charts-line-chart>
+  <div class="chart">
+    <ngx-charts-line-chart
+      [view]="view"
+      [scheme]="colorScheme"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxis]="xAxis"
+      [yAxis]="yAxis"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      [timeline]="timeline"
+      [results]="chartData"
+    ></ngx-charts-line-chart>
+  </div>
+  <a routerLink="" class="btn">Back</a>
+</div>
