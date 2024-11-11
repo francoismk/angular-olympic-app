@@ -49,3 +49,39 @@
   align-items: center;
 }
 
+
+@media (max-width: 768px) {
+  .medals-per-country h2 {
+    font-size: 20px;
+  }
+
+  .medals-per-country .info {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .medals-per-country .info p {
+    font-size: 14px;
+    min-width: unset;
+  }
+
+  .medals-per-country .chart {
+    width: 100%;
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 480px) {
+  .medals-per-country h2 {
+    font-size: 18px;
+  }
+
+  .medals-per-country .info {
+    gap: 10px;
+  }
+
+  .medals-per-country .info p {
+    font-size: 12px;
+  }
+}
