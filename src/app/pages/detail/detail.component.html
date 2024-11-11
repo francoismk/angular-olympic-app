@@ -1,0 +1,21 @@
+<h2>{{ countryName }}</h2>
+<div *ngIf="countryDetails$ | async">
+  <p>Number of entries: {{ totalEntries}}</p>
+  <p>Total number medals: {{ totalMedals }}</p>
+  <p>Total number of athletes: {{ totalAthletes }}</p>
+</div>
+<a routerLink="">Back</a>
+
+<ngx-charts-line-chart
+[view]="view"
+[scheme]="colorScheme"
+[showXAxisLabel]="showXAxisLabel"
+[showYAxisLabel]="showYAxisLabel"
+[xAxis]="xAxis"
+[yAxis]="yAxis"
+[xAxisLabel]="xAxisLabel"
+[yAxisLabel]="yAxisLabel"
+[timeline]="timeline"
+[results]="chartData"
+>
+</ngx-charts-line-chart>
