@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Observable, map, of } from 'rxjs';
 
 import { OlympicCountry } from 'src/app/core/models';
@@ -14,8 +14,8 @@ export class HomeComponent implements OnInit {
   public olympics$: Observable<OlympicCountry[] | null> = of(null);
   public chartData$: Observable<{name: string, value: number}[] | null> = of(null);
 
-  public totalCountries: number = 0;
-  public totalGames: number = 0;
+  public totalCountries: number | null = null;
+  public totalGames: number | null = null;
 
   view: any = [700, 400];
   colorScheme: any = {
@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
   gradient: boolean = true;
   showLabels: boolean = true;
 
-  constructor(private olympicService: OlympicService, private router: Router ) {}
+  constructor(private olympicService: OlympicService, private router: Router, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.olympics$ = this.olympicService.getOlympics()
@@ -39,6 +39,9 @@ export class HomeComponent implements OnInit {
 
         const allParticipations = countries.flatMap(country => country.participations);
         this.totalGames = new Set(allParticipations.map(participation => participation.year)).size;
+
+        // Force angular to re check for changes after asynchronous data loading
+        this.cdr.detectChanges();
 
         return countries.map(country =>({
           name: country.country,

@@ -1,4 +1,3 @@
-import { CommonModule, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Observable, map, of } from 'rxjs';
 
@@ -8,8 +7,6 @@ import { OlympicService } from 'src/app/core/services/olympic.service';
 
 @Component({
   selector: 'app-detail',
-  standalone: true,
-  imports: [NgIf, CommonModule],
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.scss'
 })
