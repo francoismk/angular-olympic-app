@@ -51,7 +51,6 @@ export class HomeComponent implements OnInit {
     )
   }
   onCountrySelect(event: any): void {
-    console.log("country selected: ", event)
     const country = event?.name;
 
     if(country) {
