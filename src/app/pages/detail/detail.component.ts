@@ -22,7 +22,7 @@ export class DetailComponent implements OnInit {
   chartData: any[] = [];
 
   // chart properties
-  view: any = [700, 300];
+  view: any =  [window.innerWidth * 0.9, 400];
   colorScheme: any = {
     domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
   };
@@ -51,7 +51,16 @@ export class DetailComponent implements OnInit {
         return country
       })
     )
+    window.addEventListener('resize', this.onResize);
   }
+  ngOnDestroy(): void {
+    window.removeEventListener('resize', this.onResize);
+  }
+
+    onResize = () => {
+      this.view = [window.innerWidth * 0.9, 300];
+    };
+
   prepareChartData(country: OlympicCountry): void {
     this.chartData = [
       {

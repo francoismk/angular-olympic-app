@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   public totalCountries: number | null = null;
   public totalGames: number | null = null;
 
-  view: any = [700, 400];
+  view: any =  [window.innerWidth * 0.9, 400];
   colorScheme: any = {
     domain: ['#956065', '#793D52', '#8AA1DB', '#9780A1', '#BEE0F1', '#B9CBE7']
   };
@@ -49,7 +49,17 @@ export class HomeComponent implements OnInit {
         }))
       })
     )
+    window.addEventListener('resize', this.onResize);
   }
+
+  ngOnDestroy(): void {
+    window.removeEventListener('resize', this.onResize);
+  }
+
+    onResize = () => {
+      this.view = [window.innerWidth * 0.9, 300];
+    };
+
   onCountrySelect(event: any): void {
     const country = event?.name;
 
