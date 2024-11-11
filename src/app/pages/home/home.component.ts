@@ -3,6 +3,7 @@ import { Observable, map, of } from 'rxjs';
 
 import { OlympicCountry } from 'src/app/core/models';
 import { OlympicService } from 'src/app/core/services/olympic.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -23,7 +24,7 @@ export class HomeComponent implements OnInit {
   gradient: boolean = true;
   showLabels: boolean = true;
 
-  constructor(private olympicService: OlympicService) {}
+  constructor(private olympicService: OlympicService, private router: Router ) {}
 
   ngOnInit(): void {
     this.olympics$ = this.olympicService.getOlympics()
@@ -45,5 +46,17 @@ export class HomeComponent implements OnInit {
         }))
       })
     )
+  }
+  onCountrySelect(event: any): void {
+    console.log("country selected: ", event)
+    const country = event?.name;
+
+    if(country) {
+      // go to detail page
+      this.router.navigateByUrl(`detail/${country}`)
+    } else {
+      // go to error page
+      this.router.navigateByUrl('**')
+    }
   }
 }
