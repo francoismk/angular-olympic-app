@@ -1,2 +1,6 @@
-<p>detail works!</p>
-<p>{{ countryName }}</p>
+<h2>{{ countryName }}</h2>
+<div *ngIf="countryDetails$ | async as country">
+  <p>Number of entries: {{ totalEntries}}</p>
+  <p>Total number medals: {{ totalMedals }}</p>
+  <p>Total number of athletes: {{ totalAthletes }}</p>
+</div>
