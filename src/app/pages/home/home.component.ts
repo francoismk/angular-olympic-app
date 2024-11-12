@@ -18,10 +18,8 @@ export class HomeComponent implements OnInit {
   public totalCountries: number | null = null;
   public totalGames: number | null = null;
 
-  view: any =  [window.innerWidth * 0.9, 400];
-  colorScheme: any = {
-    domain: ['#956065', '#793D52', '#8AA1DB', '#9780A1', '#BEE0F1', '#B9CBE7']
-  };
+  view: [number, number] =  [window.innerWidth * 0.9, 400];
+  colorScheme: string = 'cool';
   gradient: boolean = true;
   showLabels: boolean = true;
 
@@ -62,7 +60,7 @@ export class HomeComponent implements OnInit {
       this.view = [window.innerWidth * 0.9, 300];
     };
 
-  onCountrySelect(event: any): void {
+  onCountrySelect(event: { name: string }): void {
     const country = event?.name;
 
     if(country) {

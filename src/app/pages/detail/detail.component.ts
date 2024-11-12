@@ -1,8 +1,8 @@
 import { ActivatedRoute, Router } from '@angular/router';
+import { ChartData, OlympicCountry } from 'src/app/core/models';
 import { Component, OnInit } from '@angular/core';
 import { Observable, map, of } from 'rxjs';
 
-import { OlympicCountry } from 'src/app/core/models';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 
 @Component({
@@ -20,12 +20,10 @@ export class DetailComponent implements OnInit {
   totalEntries: number | null = null;
   totalMedals: number | null = null;
   totalAthletes: number | null = null;
-  chartData: any[] = [];
+  chartData: ChartData[] = [];
 
-  view: any =  [window.innerWidth * 0.9, 400];
-  colorScheme: any = {
-    domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
-  };
+  view: [number, number] =  [window.innerWidth * 0.9, 400];
+  colorScheme: string = 'cool';
   gradient: boolean = true;
   legend = true;
   showXAxisLabel = true;
