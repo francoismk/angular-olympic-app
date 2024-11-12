@@ -1,6 +1,11 @@
 <div class ="medals-per-country">
   <h2>Medals per country</h2>
-  <div class="info">
+
+  <div *ngIf="hasError$ | async" class="error-message">
+    <p>Sorry, there was an error loading the data. Please try again later.</p>
+  </div>
+
+  <div class="info" *ngIf="!(hasError$ | async)">
     <p><span>Number of JOs </span>{{ totalGames }}</p>
     <p><span>Number of countries </span>{{ totalCountries }}</p>
   </div>

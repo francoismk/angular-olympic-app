@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   public olympics$: Observable<OlympicCountry[] | null> = of(null);
   public chartData$: Observable<{name: string, value: number}[] | null> = of(null);
+  public hasError$: Observable<boolean> = of(false);
 
   public totalCountries: number | null = null;
   public totalGames: number | null = null;
@@ -24,10 +25,11 @@ export class HomeComponent implements OnInit {
   gradient: boolean = true;
   showLabels: boolean = true;
 
-  constructor(private olympicService: OlympicService, private router: Router, private cdr: ChangeDetectorRef) {}
+  constructor(private readonly olympicService: OlympicService, private readonly router: Router, private readonly cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.olympics$ = this.olympicService.getOlympics()
+    this.hasError$ = this.olympicService.getError();
 
     this.chartData$ = this.olympics$.pipe(
       map((countries) => {
