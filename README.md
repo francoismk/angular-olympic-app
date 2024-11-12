@@ -1,8 +1,12 @@
 # OlympicGamesStarter
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.3.
+This project is an Angular application that allows you to visualize data about the Olympic Games, including charts displaying medals won by countries. It provides detailed pages for each country and an overview of participating countries.
 
-Don't forget to install your node_modules before starting (`npm install`).
+## Prerequisites
+
+Before running the application, ensure that you have Node.js and npm installed. You can download Node.js from [here](https://nodejs.org/).
+
+Clone this project and don't forget to install your node_modules before starting (`npm install`).
 
 ## Development server
 
@@ -12,18 +16,20 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Where to start
+## Main Features
 
-As you can see, an architecture has already been defined for the project. It is just a suggestion, you can choose to use your own. The predefined architecture includes (in addition to the default angular architecture) the following:
+- View participating countries in the Olympic Games along with the total number of medals and athletes.
+- Interactive charts (e.g., pie chart showing medals by country).
+- Detailed page for each country displaying its participation in various Olympic Games.
 
-- `components` folder: contains every reusable components
-- `pages` folder: contains components used for routing
-- `core` folder: contains the business logic (`services` and `models` folders)
+## Project Structure
 
-I suggest you to start by understanding this starter code. Pay an extra attention to the `app-routing.module.ts` and the `olympic.service.ts`.
+The project is structured as follows:
 
-Once mastered, you should continue by creating the typescript interfaces inside the `models` folder. As you can see I already created two files corresponding to the data included inside the `olympic.json`. With your interfaces, improve the code by replacing every `any` by the corresponding interface.
+- src/app/components/ : Application components (e.g., homepage, country detail page).
+- src/app/services/ : Services that fetch Olympic data.
+- src/app/models/ : Data models used throughout the application.
 
-You're now ready to implement the requested features.
+## To Do / Future Improvements
 
-Good luck!
+- Handle more detailed error cases, such as when the user has no internet connection.

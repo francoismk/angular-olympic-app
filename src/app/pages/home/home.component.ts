@@ -13,21 +13,21 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   public olympics$: Observable<OlympicCountry[] | null> = of(null);
   public chartData$: Observable<{name: string, value: number}[] | null> = of(null);
+  public hasError$: Observable<boolean> = of(false);
 
   public totalCountries: number | null = null;
   public totalGames: number | null = null;
 
-  view: any =  [window.innerWidth * 0.9, 400];
-  colorScheme: any = {
-    domain: ['#956065', '#793D52', '#8AA1DB', '#9780A1', '#BEE0F1', '#B9CBE7']
-  };
+  view: [number, number] =  [window.innerWidth * 0.9, 400];
+  colorScheme: string = 'cool';
   gradient: boolean = true;
   showLabels: boolean = true;
 
-  constructor(private olympicService: OlympicService, private router: Router, private cdr: ChangeDetectorRef) {}
+  constructor(private readonly olympicService: OlympicService, private readonly router: Router, private readonly cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.olympics$ = this.olympicService.getOlympics()
+    this.hasError$ = this.olympicService.getError();
 
     this.chartData$ = this.olympics$.pipe(
       map((countries) => {
@@ -60,7 +60,7 @@ export class HomeComponent implements OnInit {
       this.view = [window.innerWidth * 0.9, 300];
     };
 
-  onCountrySelect(event: any): void {
+  onCountrySelect(event: { name: string }): void {
     const country = event?.name;
 
     if(country) {
